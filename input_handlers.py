@@ -21,7 +21,7 @@ def handle_keys(key, game_state):
 
 
 def handle_player_turn_keys(key):
-    key_char = chr(key.c)
+    key_char = key.text
 
     # Movement keys
     if key.vk == libtcod.KEY_UP or key_char == 'k':
@@ -52,7 +52,7 @@ def handle_player_turn_keys(key):
     elif key_char == 'd':
         return {'drop_inventory': True}
 
-    elif key.vk == libtcod.KEY_ENTER:
+    elif key_char == '>':
         return {'take_stairs': True}
 
     elif key_char == 'c':
@@ -77,7 +77,7 @@ def handle_targeting_keys(key):
 
 
 def handle_player_dead_keys(key):
-    key_char = chr(key.c)
+    key_char = key.text
 
     if key_char == 'i':
         return {'show_inventory': True}
@@ -109,7 +109,7 @@ def handle_inventory_keys(key):
 
 
 def handle_main_menu(key):
-    key_char = chr(key.c)
+    key_char = key.text
 
     if key_char == 'a':
         return {'new_game': True}
@@ -123,7 +123,7 @@ def handle_main_menu(key):
 
 def handle_level_up_menu(key):
     if key:
-        key_char = chr(key.c)
+        key_char = key.text
 
         if key_char == 'a':
             return {'level_up': 'hp'}
